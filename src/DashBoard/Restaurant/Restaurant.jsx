@@ -16,7 +16,8 @@ class Restaurant extends Component {
         food: [],
         showButton: true,
         price: null ,
-        count: 0
+        totalPrice: 0,
+        value:0
     }
 
     componentDidMount() {
@@ -27,20 +28,34 @@ class Restaurant extends Component {
    
     }
 
+    // handleClick = (e,price) => {
+      
+    //     let foodList = this.state.food
+
+    //     foodList.push(e)
+    //    this.setState({
+    //        food : foodList,
+    //        price:price,
+    //        totalPrice: this.state.totalPrice + price
+    //    })
+    // }
+
+    
     handleClick = (e,price) => {
-        // console.log(e)
+      
         let foodList = this.state.food
+
         foodList.push(e)
-       this.setState({
+        this.setState({
            food : foodList,
-           price:price
+           price:price,
+           totalPrice: this.state.totalPrice + price
        })
     }
 
     
 
     render() {
-        console.log(this.props)
         return (
             <div >
                 <Nav  />
@@ -49,23 +64,16 @@ class Restaurant extends Component {
                     <div className='col s12' >
                         <div className=' col s6' >
                         
-                     {/* <img src={A} style={{ width:'600px'}} />  */}
                      <img style={{padding:'30px', height:'270px', width:'380px'}} src={this.props.rootReducer[this.props.match.params.id-1].image} />
-                
 
                 </div> 
-                {console.log(this.props.match.params.id)}
-                
-                <div className='col s6' > <Cart food={this.state.food} price={this.state.price} /> </div>
+                <div className='col s6' > 
+                    <Cart food={this.state.food} price={this.state.price} totalPrice={this.state.totalPrice} /> 
+                </div>
                 </div>
                 
                     <div className='col s12' >
                    
-                    <div className='col s6'  >
-
-                        {/* <Cart food={this.state.food} price={this.state.price} /> */}
-                    </div>
-
                     <h2> {this.props.info} </h2>
                     <div   >
                     {this.props.rootReducer.map((prop) => {
@@ -73,12 +81,11 @@ class Restaurant extends Component {
                         return (
                             prop.id === this.state.id?(
                                 <div style={{marginLeft:'40px'}} >
-                                     
                                         
                                         <h2>Name: {prop.name} </h2>
                                         <h4>Location: {prop.address} </h4>
-                                    <div> {prop.dishes.map((dish) => <div>
-                                            {/* {console.log(dish)} */}
+                                    <div> {prop.items.map((item) => <div>
+                                            
                                         <div class="row">
                                         
                                             <div class="col s12 m5 ">
@@ -86,26 +93,24 @@ class Restaurant extends Component {
                                                 <div class="card-image">
                                                 </div>
                                                 <div class="card-content">
-                                                <h4> {dish} </h4>
-                                                {/* {prop.price.map((pric) => <p> {pric} </p> )} */}
-                                                <p> {prop.price} </p>
+                                                <h4> {item.name} </h4>
+                                               
+                                                <p> {item.price} </p>
                                                 
                                                 </div>
                                                 <div class="card-action">
                                               
                                                 
-                                                <button className='btn' onClick={() => this.handleClick(dish, prop.price)} >Add To Cart</button>
+                                                <button className='btn' onClick={() => this.handleClick(item.name, item.price)} >Add To Cart</button>
 
                                                 </div>
                                             </div>
                                             </div>
                                         </div>
-                                        
-                                        
-                                    </div> )}  </div>
-{/*                                     
-                                        {console.log(this.props.rootReducer[0].link)} */}
+                                    </div> 
                                     
+                                    )}  </div>
+                           
                                     <br />
                                     <a href={prop.link} target='_blank' className='btn' style={{marginLeft:'34px'}} >Visit Site</a>
                                         

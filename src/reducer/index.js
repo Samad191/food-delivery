@@ -14,15 +14,17 @@ let initState =
     
 [
    
-    { id:'1' , name:'Kababjees' , phone:'123',price:['Rs100', 'Rs200'], address: 'Gulsan', image:A , dishes: ['Biryani', 'Zinger'], link:'http://kababjees.com/' },
-    { id:'2' , name:'California Pizza' , phone:'456',price:['Rs100', 'Rs200'], address: 'Defence', image:B, dishes: ['Chinese', 'Karahai'], link:'https://www.californiapizza.com.pk/'},
-    { id:'3' , name:'PizzaHut' , phone:'789', price:['Rs100', 'Rs200'], address: 'Jauhar', image:C, dishes: ['Biryani', 'Chinese'], link:'https://www.pizzahut.com.pk/'},
-    { id:'4' , name:'BurgerLAB' , phone: '000' , price:['Rs100', 'Rs200'],address: 'Clifton', image:D, dishes: ['BBQ', 'Zinger'], link:'https://burgerlab.com.pk/' },
-    { id:'5' , name:'Shinwari' , phone:'123',price:['Rs100', 'Rs200'], address: 'Gulsan', image:E, dishes: ['BBQ', 'Karahai'], link:'https://burgeroclock.com.pk/' },
-    { id:'6' , name:'KFC' , phone:'456',price:['Rs100', 'Rs200'], address: 'Defence', image:F,dishes: ['Biryani', 'Chinese'], link:'https://www.kfcpakistan.com/' },
-    { id:'7' , name:'Hardees' , phone:'789', price:['Rs100', 'Rs200'],address: 'Jauhar',image:G,  dishes: ['BBQ', 'Zinger'], link:'https://www.hardees.com/'},
+    { id:'1' , name:'Kababjees' ,items:[{ name : "kabab" , price : 100 },{name : "golakabab", price :  200}] , address: 'Gulsan', image:A , link:'http://kababjees.com/' },
+    { id:'2' , name:'California Pizza' ,items:[{name:'Chinese', price:400},{name:'Burger', price:200}] , address: 'Defence', image:B, link:'https://www.californiapizza.com.pk/'},
+    { id:'3' , name:'PizzaHut' ,items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}] , address: 'Jauhar', image:C, link:'https://www.pizzahut.com.pk/'},
+    { id:'4' , name:'BurgerLAB' , items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}] ,address: 'Clifton', image:D, link:'https://burgerlab.com.pk/' },
+    { id:'5' , name:'Shinwari' ,items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}], address: 'Gulsan', image:E, link:'https://burgeroclock.com.pk/' },
+    { id:'6' , name:'KFC' ,items:[{name:'Chinese', price:600},{name:'Burger', price:'200'}], address: 'Defence', image:F, link:'https://www.kfcpakistan.com/' },
+    { id:'7' , name:'Hardees' ,  items:[{name:'Chinese', price:450},{name:'Burger', price:'200'}] ,address: 'Jauhar',image:G, link:'https://www.hardees.com/'},
 
 ]
+
+
 
 let userState = {
      
@@ -64,6 +66,19 @@ const changeLogin = (state = loginStatus, action) => {
             })
         }
         default: return state
+    }
+}
+
+const addRestaurant = (state = initState ,action) => {
+    switch(action.type) {
+        case 'ADD_RESTAURANT': {
+            return ({
+                ...state,
+                // id: action.payload.id,
+                name: action.payload.resName,
+                
+            })
+        }
     }
 }
 

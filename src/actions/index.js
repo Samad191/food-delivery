@@ -19,3 +19,10 @@ export const isLogin = (login) => {
     payload: login
   }
 }
+
+export const restaurantAction = (resName, firstFood, firstPrice, secondFood, secondPrice, location, link )  => {
+  return {
+    type:'ADD_RESTAURANT',
+    payload: resName, firstFood, firstPrice, secondFood, secondPrice, location, link
+  }
+}

@@ -45,31 +45,17 @@ class DashBoard extends Component {
 
     }
 
-    // onInput = (e) => {
-    //     console.log(e.target.value)
-    //     console.log(this.props)
-    //     // this.props.map((prop) => {console.log('hello')} )
-    //     this.props.rootReducer.map((root) => root.dishes.map((dish) => console.log(dish) ))
-        
-    // }
-
     onSearch = (e) => {
         this.setState({ search : e.target.value })
     }
 
-    
-    
+     
     render() {
         
         return(
             <div>
                 <Nav />
                 <br/>
-{/* 
-                <p style={{height:'500px', width:'1430px', backgroundColor:'black'}} > <img src={H} style={{height:'270px', width:'380px', marginTop:'50px'}} /> </p>
-                <p style={{color:'white'}} >Hello</p> */}
-{/* 
-                <input onChange={(e) => this.onSearch(e)} /> */}
 
             <div className='responsive' >
               
@@ -84,15 +70,11 @@ class DashBoard extends Component {
                         
                         <div className='card light-blue lighten-5'  >
                             <div className='card-image' onClick={() => console.log(re.id) } >
-{/*                             
-                                <img src={A} /> */}
 
                                  <Link to={`dashboard/${re.id}`}  > 
                                     <img src={re.image} style={{height:'170px', width:'327px'}} /> 
                                  </Link> 
                                 
-{/* 
-                                <span className='card-title'  > Title </span> */}
                             </div>
                             <div className='card-content' >
                                 
@@ -105,14 +87,11 @@ class DashBoard extends Component {
                         </div>
                 </div>
                 
-
                     )
                 })}
                 <br />
                 </div>
                     </div>
-                
-                
             </div>
         )
     }

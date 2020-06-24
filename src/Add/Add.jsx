@@ -6,12 +6,21 @@ import { connect } from 'react-redux'
 import { faVenusMars, faUserTie, faEnvelope, faSortNumericUpAlt, faUnlockAlt, faGlobeAsia, faFlag, faCity } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faKey } from '@fortawesome/free-solid-svg-icons'
+import { $CombinedState } from 'redux'
+
+import Dropdown from '../Dropdown'
 
 
 class Add extends Component {
 
-    state = { value: null }
-
+    state = 
+    { 
+        resName: '', 
+        location: '',
+        link: '',
+        items:[]
+    
+    }
 
     componentDidMount() {
         if(this.props.changeLogin.login === true ) {
@@ -23,10 +32,33 @@ class Add extends Component {
         }
     }
 
- 
-  
+
+    setResName = (e) => {
+        this.setState({ resName: e.target.value})
+    }
+
+    setFoodName = (e) => {
+        this.setState( prevState => ({
+            items:{
+                name: e.target.value
+            }
+        }) )
+    }
+
+
+    setLocation = (e) => {
+        this.setState({ location: e.target.value })
+    }
+
+    setLink = (e) => {
+        this.setState({ link: e.target.value })
+    }
+
+
+
     render() {
-        console.log(this.props.changeLogin.login)
+
+       
         return (
             <div>
                 <Nav />
@@ -36,35 +68,82 @@ class Add extends Component {
                 <div className="row" style={{marginLeft:'450px'}} >
                 
                     <div className="input-field col s3">
+                    <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'150px', marginTop:'15px'}} />
+                    <input type="text"  />
+                    
+                    <label >Restaurant Name</label>
+
+                    </div>
+                   
+                </div>
+
+                <div className="row" style={{marginLeft:'450px'}} >
+                
+                    <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
                     <input type="text"  />
                     
-                    <label >Full Name</label>
+                    <label >Food</label>
 
                     </div>
                 
                     <div className='input-field col s3' >
                         <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
-                        <input  type='email'  />
-                        <label >Email</label>
+                        <input type='number'   />
+                        <label >Price</label>
+                        
+                    </div>     
+                </div>
+                <div className="row" style={{marginLeft:'450px'}} >
+                
+                    <div className="input-field col s3">
+                    <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
+                    <input type="text"  />
+                    
+                    <label >Food</label>
+
+                    </div>
+                
+                    <div className='input-field col s3' >
+                        <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
+                        <input type='email' type='number'   />
+                        <label >Price</label>
                         
                     </div>     
                 </div>
 
-                <div className='row' style={{marginLeft:'600px'}} >
-                    <div className='input-field col s3' >
-                        <input />
-                        <label>Location</label>
-                    </div>
-                </div>
 
-                <button onClick={this.getState} >Get</button> 
 
-                <br/><br/><br/><br/>
-
-                <input />
-                <input />
+                <div className="row" style={{marginLeft:'450px'}} >
                 
+                    <div className="input-field col s3">
+                    <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
+                    <input type="text" />
+                    
+                    <label >Location</label>
+
+                    </div>
+                
+                    <div className='input-field col s3' >
+                        <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
+                        <input  type='text' />
+                        <label >Link</label>
+                        
+                    </div>     
+                </div>        
+                <p>
+            <label>
+                <input name="group1" type="radio" checked />
+                <span>Red</span>
+            </label>
+            </p>
+            <p>
+            <label>
+                <input name="group1" type="radio" />
+                <span>Yellow</span>
+            </label>
+            </p>
+              
             </div>
         )
     }

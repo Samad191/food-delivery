@@ -11,7 +11,7 @@ class Cart extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { totalAmount: 100 , show:false}
+        this.state = { show:false,  food:[], value:'' }
     }
 
     pushRoute = () => {
@@ -19,15 +19,15 @@ class Cart extends Component {
       this.setState({show:true})
       window.location.href = '/'
     }
-    
+
+  
     render() {
-      
-      console.log(this.props)
+   
         return (
           <div>
             <br />
-            {/* {this.state.show ? <a href='/' > <button className=' btn indigo' >Home Page</button> </a> : null }
-           */}
+            <button onClick={() => console.log(this.props) } >Props</button>
+           
             <div style={{marginLeft:'200px',padding:'20px'}} >
             <div class="row">
             <div class="col s12 m10">
@@ -35,23 +35,22 @@ class Cart extends Component {
                 <div class="card-content white-text">
                   <span class="card-title ">Cart</span>
                   <i class="material-icons" style={{color:'yellow'}}>shopping_cart</i>
-
-
                   
-                   <div> {this.props.food.map((foo)=> 
-                        <div>
-                            <p> {foo} </p>   
+                   <div > {this.props.food.map((foo)=> 
+                        <div className='row' >
+                       
+                            <p className='col s3' > {foo}  </p>   
+                            
+                           
                           </div>     
                     )} </div>
-
+                        <p> Total Price : {this.props.totalPrice} </p>
+                   
                 </div> 
                 <div class="card-action">
                   <div className='row' >
                     <div className='col s7' >
-                      
-                   
-                  {/* <a href="#"> <button className='btn' >Confirm Order</button> </a> */}
-                 
+          
                    <a> <button className=' btn orange' onClick={this.pushRoute} >Confirm Order</button> </a>                   
                     
                 </div>
