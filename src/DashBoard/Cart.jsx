@@ -26,7 +26,6 @@ class Cart extends Component {
         return (
           <div>
             <br />
-            <button onClick={() => console.log(this.props) } >Props</button>
            
             <div style={{marginLeft:'200px',padding:'20px'}} >
             <div class="row">

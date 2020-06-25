@@ -23,7 +23,7 @@ class Restaurant extends Component {
     componentDidMount() {
         
         let id = this.props.match.params.id
-      
+        console.log('hello', id)
         this.setState({ id })
    
     }
@@ -56,6 +56,9 @@ class Restaurant extends Component {
     
 
     render() {
+
+        
+
         return (
             <div >
                 <Nav  />
@@ -68,20 +71,20 @@ class Restaurant extends Component {
 
                 </div> 
                 <div className='col s6' > 
-                    <Cart food={this.state.food} price={this.state.price} totalPrice={this.state.totalPrice} /> 
+                    <Cart  food={this.state.food} price={this.state.price} totalPrice={this.state.totalPrice} /> 
                 </div>
                 </div>
                 
                     <div className='col s12' >
                    
                     <h2> {this.props.info} </h2>
-                    <div   >
+                    <div >
                     {this.props.rootReducer.map((prop) => {
-                        
+                        console.log(this.state.id)
                         return (
-                            prop.id === this.state.id?(
+                            prop.id == this.state.id?(
                                 <div style={{marginLeft:'40px'}} >
-                                        
+                                        {console.log('hello')}
                                         <h2>Name: {prop.name} </h2>
                                         <h4>Location: {prop.address} </h4>
                                     <div> {prop.items.map((item) => <div>
@@ -100,7 +103,6 @@ class Restaurant extends Component {
                                                 </div>
                                                 <div class="card-action">
                                               
-                                                
                                                 <button className='btn' onClick={() => this.handleClick(item.name, item.price)} >Add To Cart</button>
 
                                                 </div>

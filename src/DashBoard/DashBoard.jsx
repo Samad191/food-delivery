@@ -4,8 +4,8 @@ import Nav from '../Nav'
 import { BrowserRouter, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Footer from '../Footer/Footer'
-import A from './download.jpeg'
 
+import A from './download.jpeg'
 import B from '../assets/1.jpeg'
 import C from '../assets/2.jpeg'
 import D from '../assets/4.jpeg'
@@ -23,32 +23,6 @@ import Cart from './Cart'
 
 class DashBoard extends Component {
 
-    state = 
-    { 
-        dish: '',
-        buttons:['BBQ', 'Chinese','FastFood'],
-        images:['A','B','C','D','E','F','G'],
-        value:A
-    }
-
-
-    changeBackground = (e) => {
-        e.target.style.color = 'yellow'
-    }
-
-    returnBackground = (e) => {
-        e.target.style.color= 'orange'
-    }
-
-
-    compareDish = (e) => {
-
-    }
-
-    onSearch = (e) => {
-        this.setState({ search : e.target.value })
-    }
-
      
     render() {
         
@@ -63,6 +37,8 @@ class DashBoard extends Component {
 
                 
                 {this.props.rootReducer.map((re) => {
+
+                {/* {this.props.restaurantReducer.map((re) => { */}
                      
                     return (
                         

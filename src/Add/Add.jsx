@@ -6,21 +6,38 @@ import { connect } from 'react-redux'
 import { faVenusMars, faUserTie, faEnvelope, faSortNumericUpAlt, faUnlockAlt, faGlobeAsia, faFlag, faCity } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faKey } from '@fortawesome/free-solid-svg-icons'
-import { $CombinedState } from 'redux'
+// import {restaurantAction} from '../actions/index'
 
-import Dropdown from '../Dropdown'
+import B from '../assets/1.jpeg'
+import C from '../assets/2.jpeg'
+import D from '../assets/4.jpeg'
+import E from '../assets/5.jpeg'
+import F from '../assets/6.jpeg'
+import G from '../assets/7.jpeg'
+import H from '../assets/9.jpeg'
+import I from '../assets/11.jpg'
 
 
 class Add extends Component {
 
     state = 
     { 
+        id: this.props.rootReducer.length + 1 ,
         resName: '', 
+        
+        foodFirst: '',
+        priceFirst: null,
+        
+        foodSecond: '',
+        priceSecond: null,
+        
         location: '',
+        image: '',
+        
         link: '',
-        items:[]
-    
+
     }
+
 
     componentDidMount() {
         if(this.props.changeLogin.login === true ) {
@@ -32,19 +49,29 @@ class Add extends Component {
         }
     }
 
-
     setResName = (e) => {
-        this.setState({ resName: e.target.value})
+        this.setState({ resName: e.target.value })
     }
 
-    setFoodName = (e) => {
-        this.setState( prevState => ({
-            items:{
-                name: e.target.value
-            }
-        }) )
+    setFoodFirst = (e) => {
+        this.setState({ foodFirst: e.target.value })
     }
 
+    setPriceFirst = (e) => {
+        this.setState({ priceFirst: e.target.value })
+    }
+
+    setFoodSecond = (e) => {
+        this.setState({ foodSecond: e.target.value })
+    }
+
+    setPriceSecond = (e) => {
+        this.setState({ priceSecond: e.target.value })
+    }
+
+    setImage = (e) => {
+        this.setState({ image: e.target.value })
+    }
 
     setLocation = (e) => {
         this.setState({ location: e.target.value })
@@ -54,25 +81,50 @@ class Add extends Component {
         this.setState({ link: e.target.value })
     }
 
-
-
-    render() {
-
+    // handleSubmit = (e) => {
+    //     let newRestaurant =  { id: this.state.id, name: this.state.resName, items:[{ name: this.state.foodFirst, price: this.state.priceFirst }, {name: this.state.foodSecond, price: this.state.priceSecond}], address: this.state.location, image: this.state.image, link: this.state.link  }
        
+    //     let restaurantState = this.props.rootReducer
+        
+    //     restaurantState.push(newRestaurant)
+
+    //     this.props.restaurantAction(restaurantState)
+
+    // }
+
+
+    onChange = (e) => {
+        let files = e.target.files
+        console.log('data files',files)
+
+        let reader = new FileReader()
+        reader.readAsDataURL(files[0])
+
+        reader.onload = (e) => {
+            console.warn('img data', e.target.result)
+        }
+    }
+
+ 
+    render() {
+        
         return (
             <div>
-                <Nav />
-                   
-                <h1  >Add <span style={{color:'royalBlue'}} >Restaurant</span> </h1>
+               <Nav />
+                <h1 >Add <span style={{color:'royalBlue'}} >Restaurant</span> </h1>
                         
                 <div className="row" style={{marginLeft:'450px'}} >
                 
                     <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'150px', marginTop:'15px'}} />
-                    <input type="text"  />
-                    
+                    <input type="text" onChange={(e) => this.setResName(e) } />
                     <label >Restaurant Name</label>
+                    </div>
 
+                    <div className="input-field col s3">
+                    <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'150px', marginTop:'15px'}} />
+                    <input type="text" onChange={(e) => this.setImage(e) } />
+                    <label >Image </label>
                     </div>
                    
                 </div>
@@ -81,7 +133,7 @@ class Add extends Component {
                 
                     <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
-                    <input type="text"  />
+                    <input type="text" onChange={(e) => this.setFoodFirst(e) } />
                     
                     <label >Food</label>
 
@@ -89,7 +141,7 @@ class Add extends Component {
                 
                     <div className='input-field col s3' >
                         <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
-                        <input type='number'   />
+                        <input type='number' onChange={(e) => this.setPriceFirst(e) }   />
                         <label >Price</label>
                         
                     </div>     
@@ -98,7 +150,7 @@ class Add extends Component {
                 
                     <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
-                    <input type="text"  />
+                    <input type="text" onChange={(e) => this.setFoodSecond(e) } />
                     
                     <label >Food</label>
 
@@ -106,7 +158,7 @@ class Add extends Component {
                 
                     <div className='input-field col s3' >
                         <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
-                        <input type='email' type='number'   />
+                        <input type='number' onChange={(e) => this.setPriceSecond(e) } />
                         <label >Price</label>
                         
                     </div>     
@@ -118,7 +170,7 @@ class Add extends Component {
                 
                     <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'90px', marginTop:'15px'}} />
-                    <input type="text" />
+                    <input type="text" onChange={(e) => this.setLocation(e) } />
                     
                     <label >Location</label>
 
@@ -126,12 +178,17 @@ class Add extends Component {
                 
                     <div className='input-field col s3' >
                         <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
-                        <input  type='text' />
+                        <input  type='text' onChange={(e) => this.setLink(e)} />
                         <label >Link</label>
                         
                     </div>     
                 </div>        
-                <p>
+
+                <button className='btn' onClick={this.handleSubmit} >Submit</button>
+                
+                {/* <input type='file' name='file' onChange={(e) => this.onChange(e) } /> */}
+
+                {/* <p>
             <label>
                 <input name="group1" type="radio" checked />
                 <span>Red</span>
@@ -142,7 +199,7 @@ class Add extends Component {
                 <input name="group1" type="radio" />
                 <span>Yellow</span>
             </label>
-            </p>
+            </p> */}
               
             </div>
         )
@@ -153,4 +210,5 @@ const mapStateToProps = (state) => {
     return state
 }
 
-export default connect(mapStateToProps) (Add)
+// export default connect(mapStateToProps, {restaurantAction} ) (Add)
+export default connect(mapStateToProps ) (Add)

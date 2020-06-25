@@ -20,9 +20,9 @@ export const isLogin = (login) => {
   }
 }
 
-export const restaurantAction = (resName, firstFood, firstPrice, secondFood, secondPrice, location, link )  => {
-  return {
-    type:'ADD_RESTAURANT',
-    payload: resName, firstFood, firstPrice, secondFood, secondPrice, location, link
-  }
-}
+// export const restaurantAction = (Info)  => {
+//   return {
+//     type:'ADD_RESTAURANT',
+//     payload: Info
+//   }
+// }

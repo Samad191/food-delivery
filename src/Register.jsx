@@ -11,10 +11,6 @@ import { faVenusMars, faUserTie, faEnvelope, faSortNumericUpAlt, faUnlockAlt, fa
 import { connect } from 'react-redux'
 import { userAction, addUser } from './actions/index'
 
-// import * as firebase from "firebase/app";
-// import "firebase/auth";
-// import "firebase/firestore";
-
 
 class Register extends Component{
 
@@ -54,9 +50,7 @@ class Register extends Component{
     handleSubmit = (e) => {
        
         // e.preventDefault()
-        this.props.addUser(this.state.userName, this.state.userPassword)
-        
-        
+        this.props.addUser(this.state.userName, this.state.userPassword)  
     }
 
    

@@ -13,14 +13,14 @@ import SignIn from '../signIn/SignIn'
 let initState =  
     
 [
-   
-    { id:'1' , name:'Kababjees' ,items:[{ name : "kabab" , price : 100 },{name : "golakabab", price :  200}] , address: 'Gulsan', image:A , link:'http://kababjees.com/' },
-    { id:'2' , name:'California Pizza' ,items:[{name:'Chinese', price:400},{name:'Burger', price:200}] , address: 'Defence', image:B, link:'https://www.californiapizza.com.pk/'},
-    { id:'3' , name:'PizzaHut' ,items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}] , address: 'Jauhar', image:C, link:'https://www.pizzahut.com.pk/'},
-    { id:'4' , name:'BurgerLAB' , items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}] ,address: 'Clifton', image:D, link:'https://burgerlab.com.pk/' },
-    { id:'5' , name:'Shinwari' ,items:[{name:'Chinese', price:400},{name:'Burger', price:'200'}], address: 'Gulsan', image:E, link:'https://burgeroclock.com.pk/' },
-    { id:'6' , name:'KFC' ,items:[{name:'Chinese', price:600},{name:'Burger', price:'200'}], address: 'Defence', image:F, link:'https://www.kfcpakistan.com/' },
-    { id:'7' , name:'Hardees' ,  items:[{name:'Chinese', price:450},{name:'Burger', price:'200'}] ,address: 'Jauhar',image:G, link:'https://www.hardees.com/'},
+
+    { id: 1 , name:'Kababjees' ,items:[{ name : "kabab" , price : 100 },{name : "golakabab", price :  200}] , address: 'Gulsan', image:A , link:'http://kababjees.com/' },
+    { id: 2 , name:'California Pizza' ,items:[{name:'Chinese', price:400},{name:'Burger', price:200}] , address: 'Defence', image:B, link:'https://www.californiapizza.com.pk/'},
+    { id: 3 , name:'PizzaHut' ,items:[{name:'Chinese', price:400},{name:'Burger', price:200}] , address: 'Jauhar', image:C, link:'https://www.pizzahut.com.pk/'},
+    { id: 4 , name:'BurgerLAB' , items:[{name:'Chinese', price:400},{name:'Burger', price:200}] ,address: 'Clifton', image:D, link:'https://burgerlab.com.pk/' },
+    { id: 5 , name:'Shinwari' ,items:[{name:'Chinese', price:400},{name:'Burger', price:200}], address: 'Gulsan', image:E, link:'https://burgeroclock.com.pk/' },
+    { id: 6 , name:'KFC' ,items:[{name:'Chinese', price:600},{name:'Burger', price:200}], address: 'Defence', image:F, link:'https://www.kfcpakistan.com/' },
+    { id: 7 , name:'Hardees' ,  items:[{name:'Chinese', price:450},{name:'Burger', price:200}] ,address: 'Jauhar',image:G, link:'https://www.hardees.com/'},
 
 ]
 
@@ -69,22 +69,23 @@ const changeLogin = (state = loginStatus, action) => {
     }
 }
 
-const addRestaurant = (state = initState ,action) => {
-    switch(action.type) {
-        case 'ADD_RESTAURANT': {
-            return ({
-                ...state,
-                // id: action.payload.id,
-                name: action.payload.resName,
-                
-            })
-        }
-    }
-}
+// const restaurantReducer = (state = initState ,action) => {
+//     switch(action.type) {
+//         case 'ADD_RESTAURANT': {
+//             return ({
+//                 ...state
+//                 // // id: action.payload.id,
+//                 // initState: action.payload
+//             })
+//         }
+//         default: return state
+//     }
+// }
 
 
 export default combineReducers({
     rootReducer,
     userReducer,
-    changeLogin
+    changeLogin,
+    // restaurantReducer
 })

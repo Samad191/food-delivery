@@ -8,7 +8,7 @@ class Nav extends Component{
 
     state = { signIn: false }
 
-    componentDidUpdate() {
+    componentDidMount() {
         this.setState({ signIn: this.props.signIn })
     }
 
