@@ -134,11 +134,11 @@ class Add extends Component {
             <div>
                <Nav />
               
-                <h1 >Add <span style={{color:'royalBlue'}} >Restaurant</span> </h1>
+                <h3 style={{marginLeft:'500px'}} >Add <span style={{color:'royalBlue'}} >Restaurant</span> </h3>
                         
                 <div className="row" style={{marginLeft:'450px'}} >
                 
-                    <div className="input-field col s3">
+                    <div style={{marginLeft:'100px'}} className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'150px', marginTop:'15px'}} />
                     <input type="text" onChange={(e) => this.setResName(e) } />
                     <label >Restaurant Name</label>
@@ -208,16 +208,16 @@ class Add extends Component {
                 </div>        
 
                 
-                <input type='file' name='image-upload' id='input' accept='image/*' onChange={this.imageHandler } />
+                <input style={{marginLeft:'600px'}} type='file' name='image-upload' id='input' accept='image/*' onChange={this.imageHandler } />
                 <div className='label' >
                     <label htmlFor='input' className='image-upload' >
-                        <i className='material-icons' >add_photo_alternate</i>
-                        Choose Your Photo
                     </label>
                 </div>
+                <br/>
+            
 
-                <button className='btn' onClick={this.handleSubmit} >SUBMIT</button>
-
+                <button style={{marginLeft:'600px'}} className='btn' onClick={this.handleSubmit} >SUBMIT</button>
+                    <br/><br/>
                 {/* <img src={this.state.image} style={{height:'200px', width:'300px'}} /> */}
                 {/* <p>
             <label>
