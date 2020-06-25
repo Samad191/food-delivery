@@ -80,7 +80,7 @@ class Restaurant extends Component {
                     <h2> {this.props.info} </h2>
                     <div >
                     {this.props.rootReducer.map((prop) => {
-                        console.log(this.state.id)
+                        
                         return (
                             prop.id == this.state.id?(
                                 <div style={{marginLeft:'40px'}} >

@@ -6,7 +6,7 @@ import { connect } from 'react-redux'
 import { faVenusMars, faUserTie, faEnvelope, faSortNumericUpAlt, faUnlockAlt, faGlobeAsia, faFlag, faCity } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faKey } from '@fortawesome/free-solid-svg-icons'
-// import {restaurantAction} from '../actions/index'
+import {restaurantAction} from '../actions/index'
 
 import B from '../assets/1.jpeg'
 import C from '../assets/2.jpeg'
@@ -35,6 +35,7 @@ class Add extends Component {
         image: '',
         
         link: '',
+        
 
     }
 
@@ -81,29 +82,50 @@ class Add extends Component {
         this.setState({ link: e.target.value })
     }
 
-    // handleSubmit = (e) => {
-    //     let newRestaurant =  { id: this.state.id, name: this.state.resName, items:[{ name: this.state.foodFirst, price: this.state.priceFirst }, {name: this.state.foodSecond, price: this.state.priceSecond}], address: this.state.location, image: this.state.image, link: this.state.link  }
+    handleSubmit = (e) => {
+        let newRestaurant =  { id: this.state.id, name: this.state.resName, items:[{ name: this.state.foodFirst, price: this.state.priceFirst }, {name: this.state.foodSecond, price: this.state.priceSecond}], address: this.state.location, image: this.state.image, link: this.state.link  }
        
-    //     let restaurantState = this.props.rootReducer
+        let restaurantState = this.props.rootReducer
         
-    //     restaurantState.push(newRestaurant)
+        restaurantState.push(newRestaurant)
 
-    //     this.props.restaurantAction(restaurantState)
+        this.props.restaurantAction(restaurantState)
 
-    // }
+        alert('Thank U for Registration')
+
+        this.props.history.push('/')
+       
+    }
 
 
     onChange = (e) => {
         let files = e.target.files
-        console.log('data files',files)
+        // console.log('data files',files)
 
         let reader = new FileReader()
         reader.readAsDataURL(files[0])
 
         reader.onload = (e) => {
-            console.warn('img data', e.target.result)
+            console.warn('img data')
         }
     }
+
+    imageHandler = (e) => {
+        const reader = new FileReader()
+        reader.onload = () => {
+            if(reader.readyState === 2) {
+                this.setState({ image: reader.result})
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+    }
+
+    // imageConsole = (e) => {
+    //     let img = e.target.files[0];
+    //     this.setState({
+    //         image: URL.createObjectURL(img)
+    //       });
+    // }
 
  
     render() {
@@ -111,6 +133,7 @@ class Add extends Component {
         return (
             <div>
                <Nav />
+              
                 <h1 >Add <span style={{color:'royalBlue'}} >Restaurant</span> </h1>
                         
                 <div className="row" style={{marginLeft:'450px'}} >
@@ -121,11 +144,11 @@ class Add extends Component {
                     <label >Restaurant Name</label>
                     </div>
 
-                    <div className="input-field col s3">
+                    {/* <div className="input-field col s3">
                     <FontAwesomeIcon icon={faUserTie} style={{marginLeft:'150px', marginTop:'15px'}} />
                     <input type="text" onChange={(e) => this.setImage(e) } />
                     <label >Image </label>
-                    </div>
+                    </div> */}
                    
                 </div>
 
@@ -184,10 +207,18 @@ class Add extends Component {
                     </div>     
                 </div>        
 
-                <button className='btn' onClick={this.handleSubmit} >Submit</button>
                 
-                {/* <input type='file' name='file' onChange={(e) => this.onChange(e) } /> */}
+                <input type='file' name='image-upload' id='input' accept='image/*' onChange={this.imageHandler } />
+                <div className='label' >
+                    <label htmlFor='input' className='image-upload' >
+                        <i className='material-icons' >add_photo_alternate</i>
+                        Choose Your Photo
+                    </label>
+                </div>
 
+                <button className='btn' onClick={this.handleSubmit} >SUBMIT</button>
+
+                {/* <img src={this.state.image} style={{height:'200px', width:'300px'}} /> */}
                 {/* <p>
             <label>
                 <input name="group1" type="radio" checked />
@@ -210,5 +241,4 @@ const mapStateToProps = (state) => {
     return state
 }
 
-// export default connect(mapStateToProps, {restaurantAction} ) (Add)
-export default connect(mapStateToProps ) (Add)
+export default connect(mapStateToProps, {restaurantAction} ) (Add)

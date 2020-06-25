@@ -26,7 +26,7 @@ class Cart extends Component {
         return (
           <div>
             <br />
-           
+           {console.log(this.props)}
             <div style={{marginLeft:'200px',padding:'20px'}} >
             <div class="row">
             <div class="col s12 m10">

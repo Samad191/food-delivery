@@ -38,11 +38,8 @@ class SignIn extends Component {
     this.setState({match2: true})
     alert('Invalid User')
     }
-
-   
-      
+    
   }  
-
   
     render() {
       console.log(this.props)
@@ -59,7 +56,7 @@ class SignIn extends Component {
                 <div class="row">
                   <div class="input-field col s5">
                   <i class="material-icons prefix">account_circle</i>
-                    <input id="input_text" type="text" onChange={(e) => this.handleUserName(e)} />
+                    <input id="input_text" autoComplete='off' type="text" onChange={(e) => this.handleUserName(e)} />
                     <label for="input_text">Name</label>
                   </div>
                 </div>
