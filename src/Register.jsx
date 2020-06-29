@@ -46,16 +46,35 @@ class Register extends Component{
     handleUserConfirmPassword = (e) => {
         this.setState({ userConfirmPassword: e.target.value })
     }
-
+   
     handleSubmit = (e) => {
-       
-        // e.preventDefault()
-        this.props.addUser(this.state.userName, this.state.userPassword)  
+        const regex = { 
+            email: /^(([^<>()\\.,;:\s@"]+(\.[^<>()\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i,
+            name: /^[a-zA-Z\s-]{3,}$/
+        }
+
+        let resultEmail = regex.email.test(this.state.userEmail)
+        let resultName = regex.name.test(this.state.userName)
+        
+        e.preventDefault()
+
+        if( resultEmail == true && resultName == true && this.state.userName != '' && this.state.userEmail != '' && this.state.age != '' && this.state.userCountry != '' && this.state.userPassword != '' && this.state.userConfirmPassword != '' && this.state.userPassword == this.state.userConfirmPassword ) {
+            this.props.addUser(this.state.userName, this.state.userPassword)  
+            alert('Thank U for Registering')
+            this.props.history.push('/')
+        }
+
+        else {
+            alert('Error Input values not correct')
+        }
+        
     }
+
+
 
    
     render() {
-        console.log(this.props)
+        
         return(
             <div >
                     <Nav />
@@ -81,6 +100,8 @@ class Register extends Component{
                     <FontAwesomeIcon icon={faEnvelope} style={{marginLeft:'90px', marginTop:'15px'}} />
                     <input value={this.state.userEmail}  type='email' onChange={(e) => this.handleUserEmail(e) } />
                     <label >Email</label>
+
+                    
                     
                 </div>
                 

@@ -21,12 +21,13 @@ class Cart extends Component {
     }
 
   
+  
     render() {
    
         return (
           <div>
             <br />
-           {console.log(this.props)}
+           
             <div style={{marginLeft:'200px',padding:'20px'}} >
             <div class="row">
             <div class="col s12 m10">
@@ -39,8 +40,8 @@ class Cart extends Component {
                         <div className='row' >
                        
                             <p className='col s3' > {foo}  </p>   
-                            
-                           
+                         
+                                  
                           </div>     
                     )} </div>
                         <p> Total Price : {this.props.totalPrice} </p>

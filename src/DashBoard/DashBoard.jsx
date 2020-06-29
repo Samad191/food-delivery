@@ -25,6 +25,10 @@ class DashBoard extends Component {
 
      
     render() {
+
+        const styleButton = {
+            marginLeft : '100px'
+        }
         
         return(
             <div>
@@ -32,10 +36,13 @@ class DashBoard extends Component {
                 <br/>
 
             <div className='responsive' >
-              
+
+            <button className='btn' style={{styleButton}} >BBQ</button>
+            <button className='btn' >Chinese</button>
+            <button className='btn' >Burger</button>
+
                 <div className='row' >
 
-                
                 {this.props.rootReducer.map((re) => {
 
                 {/* {this.props.restaurantReducer.map((re) => { */}
@@ -46,7 +53,7 @@ class DashBoard extends Component {
                         
                         <div className='card light-blue lighten-5'  >
                             <div className='card-image' onClick={() => console.log(re.id) } >
-
+                            
                                  <Link to={`dashboard/${re.id}`}  > 
                                     <img src={re.image} style={{height:'170px', width:'327px'}} /> 
                                  </Link> 

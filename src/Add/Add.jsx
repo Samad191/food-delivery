@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSignInAlt, faKey } from '@fortawesome/free-solid-svg-icons'
 import {restaurantAction} from '../actions/index'
 
+import {Map,InfoWindow, Marker, GoogleApiWrapper } from 'google-map-react'
+
 import B from '../assets/1.jpeg'
 import C from '../assets/2.jpeg'
 import D from '../assets/4.jpeg'
@@ -83,6 +85,13 @@ class Add extends Component {
     }
 
     handleSubmit = (e) => {
+
+        if(this.state.resName == '' || this.state.foodFirst == '' || this.state.priceFirst == null || this.state.foodSecond == '' || this.state.priceSecond == null || this.state.image == '' || this.state.location == '' || this.state.link == '' ) {
+            alert('Wrong Input') 
+        }
+
+        else { 
+
         let newRestaurant =  { id: this.state.id, name: this.state.resName, items:[{ name: this.state.foodFirst, price: this.state.priceFirst }, {name: this.state.foodSecond, price: this.state.priceSecond}], address: this.state.location, image: this.state.image, link: this.state.link  }
        
         let restaurantState = this.props.rootReducer
@@ -94,6 +103,8 @@ class Add extends Component {
         alert('Thank U for Registration')
 
         this.props.history.push('/')
+
+        }
        
     }
 
@@ -216,8 +227,8 @@ class Add extends Component {
                 <br/>
             
 
-                <button style={{marginLeft:'600px'}} className='btn' onClick={this.handleSubmit} >SUBMIT</button>
-                    <br/><br/>
+                <button style={{marginLeft:'640px'}} className='btn' onClick={this.handleSubmit} >SUBMIT</button>
+                    <br/><br/>  
                 {/* <img src={this.state.image} style={{height:'200px', width:'300px'}} /> */}
                 {/* <p>
             <label>

@@ -17,47 +17,34 @@ class Restaurant extends Component {
         showButton: true,
         price: null ,
         totalPrice: 0,
-        value:0
+        value:0,
     }
 
     componentDidMount() {
         
         let id = this.props.match.params.id
-        console.log('hello', id)
+        // console.log('hello', id)
         this.setState({ id })
    
     }
 
-    // handleClick = (e,price) => {
-      
-    //     let foodList = this.state.food
-
-    //     foodList.push(e)
-    //    this.setState({
-    //        food : foodList,
-    //        price:price,
-    //        totalPrice: this.state.totalPrice + price
-    //    })
-    // }
-
-    
+    //handle clicks on a card
     handleClick = (e,price) => {
-      
-        let foodList = this.state.food
+        
+            let foodList = this.state.food
 
-        foodList.push(e)
-        this.setState({
-           food : foodList,
-           price:price,
-           totalPrice: this.state.totalPrice + price
-       })
+            let newPrice = parseInt(price);
+
+            foodList.push(e)
+            this.setState({
+                food : foodList,
+                price:price,
+                totalPrice: this.state.totalPrice + newPrice
+            })         
     }
-
-    
 
     render() {
 
-        
 
         return (
             <div >
@@ -84,7 +71,7 @@ class Restaurant extends Component {
                         return (
                             prop.id == this.state.id?(
                                 <div style={{marginLeft:'40px'}} >
-                                        {console.log('hello')}
+                                       
                                         <h2>Name: {prop.name} </h2>
                                         <h4>Location: {prop.address} </h4>
                                     <div> {prop.items.map((item) => <div>
@@ -103,7 +90,7 @@ class Restaurant extends Component {
                                                 </div>
                                                 <div class="card-action">
                                               
-                                                <button className='btn' onClick={() => this.handleClick(item.name, item.price)} >Add To Cart</button>
+                                                <button disabled={this.props.changeLogin == true} className='btn' onClick={() => this.handleClick(item.name, item.price)} >Add To Cart</button>
 
                                                 </div>
                                             </div>

@@ -13,6 +13,7 @@ import Add from './Add/Add'
 import Footer from './Footer/Footer'
 
 import { connect } from 'react-redux'
+import Logout from './Logout/Logout';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
@@ -21,12 +22,11 @@ import { connect } from 'react-redux'
 class App extends Component{
   render() {
     return(
-      <div className="App" style={{backgroundColor:'azure'}} > 
 
+      <div className="App" style={{backgroundColor:'azure'}} > 
       
       <BrowserRouter>
         <Switch>
-          
         <Route path='/' exact component={DashBoard} />
 
         <Route path='/register' exact component={Register} />
@@ -36,10 +36,14 @@ class App extends Component{
         <Route path='/signin' exact component={SignIn}  />
 
         <Route path='/add' exact component={Add} />
+{/* 
+        <Route path='/logout' exact component={Logout} /> */}
    
-        {/* <Route path='/food' exact component={Food} /> */}   
+        {/* <Route path='/food' exact component={Food} /> */} 
+          
         </Switch>
       </BrowserRouter>
+
       <Footer/>
       
 

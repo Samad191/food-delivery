@@ -13,6 +13,7 @@
     "antd": "^4.3.5",
     "bootstrap": "^4.5.0",
     "font-awesome": "^4.7.0",
+    "google-map-react": "^1.1.7",
     "mdbreact": "^4.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
